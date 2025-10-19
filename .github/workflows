@@ -1,0 +1,28 @@
+name: GitHub Classroom Autograding
+
+on: [push, workflow_dispatch]
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out code của sinh viên
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Chạy bộ test tự động của Classroom
+      # Hành động này sẽ tự động sao chép các tệp trong .github/classroom
+      # và chạy các lệnh trong .github/classroom/autograding.json
+      - name: Run autograding
+        uses: education/autograding@v1
+        
+      # 3. Đăng kết quả lên Pull Request (nếu có)
+      - name: Post results
+        if: always()
+        uses: github-classroom/autograding-status-action@v1
