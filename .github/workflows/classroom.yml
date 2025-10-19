@@ -12,20 +12,15 @@ jobs:
     name: Autograding
     runs-on: ubuntu-latest
     
-    # Bỏ qua chạy test nếu người commit là bot của classroom
-    # (giống hệt file Python của bạn)
+    # Bỏ qua việc chạy test nếu người commit là bot của classroom
     if: github.actor != 'github-classroom[bot]'
     
     steps:
       # 1. Check out code của sinh viên
       - name: Checkout code
-        uses: actions/checkout@v4 # Dùng v4 mới nhất
+        uses: actions/checkout@v4
 
-      # 2. Chạy bộ test
-      # Action này sẽ tự động:
-      #  - Tìm file .github/classroom/autograding.json
-      #  - Chạy lệnh "setup" và "run" trong file đó (tức là 'make all' và 'make run')
-      #  - Tìm file results.json do test_runner.cpp tạo ra
-      #  - Phân tích file JSON đó và báo cáo điểm chi tiết (vd: 8/10)
+      # 2. Chạy bộ test và đăng kết quả
       - name: Run autograding
+        # Đảm bảo dòng này chính xác 100%, bao gồm cả @v1
         uses: education/github-classroom-autograding-action@v1
