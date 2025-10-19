@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Homework Grader (10 points)",
+      "setup": "make all",
+      "run": "make run",
+      "input": "",
+      "output": "",
+      "comparison": "json",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
